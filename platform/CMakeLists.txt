@@ -3,17 +3,21 @@ set(BINARY ${CMAKE_PROJECT_NAME})
 if (WIN32)
 	# do nothing
 elseif (APPLE)
-	file(GLOB_RECURSE PLATFORM_SOURCES LIST_DIRECTORIES true *.h *.mm)      
-    file(GLOB HEADER LIST_DIRECTORIES true *.h)
+	# file(GLOB_RECURSE PLATFORM_SOURCES LIST_DIRECTORIES true *.h *.mm)      
+    # file(GLOB HEADER LIST_DIRECTORIES true *.h)
 
-    add_library(pim_ios ${PLATFORM_SOURCES})
+    # add_library(pim_ios squarerootwrapper.mm)
 
-    target_link_libraries(pim_ios PUBLIC core_lib "-framework Cocoa" "-framework AppKit" "-framework CoreData" "-framework Foundation")
+    # target_link_libraries(pim_ios PUBLIC core_lib "-framework Cocoa" "-framework AppKit" "-framework CoreData" "-framework Foundation")
 
-    target_include_directories(pim_ios PUBLIC "${CMAKE_SOURCE_DIR}/core" "${CMAKE_SOURCE_DIR}/platform")
+    # target_include_directories(pim_ios PUBLIC "${CMAKE_SOURCE_DIR}" "${CMAKE_SOURCE_DIR}/core")
 
-    install(FILES ${HEADER} DESTINATION "${CMAKE_SOURCE_DIR}/platform/output")
-    install(TARGETS pim_ios DESTINATION "${CMAKE_SOURCE_DIR}/platform/output")
+    add_executable(sqrtcomputer squarerootwrapperuser.cpp)
+    target_link_libraries(sqrtcomputer PUBLIC core_lib)
+    target_include_directories(sqrtcomputer PUBLIC "${CMAKE_SOURCE_DIR}" "${CMAKE_SOURCE_DIR}/core")
+
+    # install(FILES ${HEADER} DESTINATION "${CMAKE_SOURCE_DIR}/platform/output")
+    install(TARGETS sqrtcomputer DESTINATION "${CMAKE_SOURCE_DIR}/platform/output")
 
 else()
 	# do nothing

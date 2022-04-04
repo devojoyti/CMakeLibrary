@@ -1,8 +1,4 @@
-set(BINARY ${CMAKE_PROJECT_NAME})
-
-file(GLOB_RECURSE SOURCES LIST_DIRECTORIES true *.h *.cpp)
-
-add_library(core_lib ${SOURCES})
+add_library(core_lib squareroot.cpp)
 
 if (WIN32)
 	# do nothing
