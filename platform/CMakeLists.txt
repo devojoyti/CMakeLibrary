@@ -12,8 +12,8 @@ elseif (APPLE)
 
     # target_include_directories(pim_ios PUBLIC "${CMAKE_SOURCE_DIR}" "${CMAKE_SOURCE_DIR}/core")
 
-    add_executable(sqrtcomputer squarerootwrapperuser.cpp)
-    target_link_libraries(sqrtcomputer PUBLIC core_lib)
+    add_executable(sqrtcomputer sqrtuserobjc.mm)
+    target_link_libraries(sqrtcomputer PUBLIC core_lib "-framework Foundation")
     target_include_directories(sqrtcomputer PUBLIC "${CMAKE_SOURCE_DIR}" "${CMAKE_SOURCE_DIR}/core")
 
     # install(FILES ${HEADER} DESTINATION "${CMAKE_SOURCE_DIR}/platform/output")
